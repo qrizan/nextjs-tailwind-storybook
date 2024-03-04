@@ -1,15 +1,17 @@
 import axios from "axios";
 
+const URL = 'http://localhost:3000'
 
-function generateSiteMap(posts) {
+
+function generateSiteMap(posts: { slug: string; updated_at: string; }[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
-   <loc>${process.env.NEXT_PUBLIC_API_BACKEND}</loc>
+   <loc>${URL}</loc>
    <priority>1</priority>
  </url>
  <url>
-   <loc>${`${process.env.NEXT_PUBLIC_API_BACKEND}/posts/`}</loc>
+   <loc>${`${URL}/posts/`}</loc>
    <changefreq>weekly</changefreq>
    <priority>0.8</priority>
  </url>   
@@ -17,7 +19,7 @@ function generateSiteMap(posts) {
       .map((post: { slug: string; updated_at: string; }) => {
         return `
        <url>
-           <loc>${`${process.env.NEXT_PUBLIC_API_BACKEND}/posts/${post.slug}`}</loc>
+           <loc>${`${URL}/posts/${post.slug}`}</loc>
            <lastmod>${post.updated_at}</lastmod>
            <changefreq>monthly</changefreq>
            <priority>0.8</priority>           
