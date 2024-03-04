@@ -8,7 +8,7 @@ const base: IPost = {
   image: 'https://fakeimg.pl/400x400/?text=Post',
   user: 'User',
   category: 'Category',
-  updated_at: 'Fri March 1, 2024'
+  updated_at: '2024-03-04T06:09:46.000000Z'
 };
 
 export const mockPostProps = {
