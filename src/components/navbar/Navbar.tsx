@@ -71,7 +71,7 @@ const Navbar: React.FC<INavbar> = (props) => {
                             </li>
                             <li className="text-gray-600 hover:text-gray-700 cursor-pointer">
                                 <Link href="/posts">
-                                    Post
+                                    Posts
                                 </Link>
                             </li>
                             <li className="text-gray-600 hover:text-gray-700 cursor-pointer">

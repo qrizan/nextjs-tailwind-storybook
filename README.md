@@ -13,14 +13,14 @@ NEXT_PUBLIC_API_BACKEND = 'http://localhost:8000'
 > src/pages/api/robots.ts
 
 ``` 
-URL: http://localhost:3000/robots.txt 
+check URL: http://localhost:3000/robots.txt 
 ```
  
 #### posts sitemap.xml configuration
 > src/pages/sitemap.xml.ts
 
 ``` 
-URL: http://localhost:3000/sitemap.xml
+check URL: http://localhost:3000/sitemap.xml
 ```
 
 #### header tag
