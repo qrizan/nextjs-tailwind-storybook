@@ -1,4 +1,13 @@
-## Base Application
+## New Application
+
+#### built with
+
+| Tools  |  |
+| :--- | :--- |
+| Nest JS  | https://nextjs.org  |
+| Tailwind CSS | https://tailwindcss.com  |
+| Storybook | https://storybook.js.org |
+| etc |  |
 
 #### API
 
@@ -10,25 +19,21 @@ NEXT_PUBLIC_API_BACKEND = 'http://localhost:8000'
 ```
 
 #### robots.txt configuration
-> src/pages/api/robots.ts
+- src/pages/api/robots.ts
+> check URL: http://localhost:3000/robots.txt 
 
-``` 
-check URL: http://localhost:3000/robots.txt 
-```
  
 #### posts sitemap.xml configuration
-> src/pages/sitemap.xml.ts
+- src/pages/sitemap.xml.ts
+> check URL: http://localhost:3000/sitemap.xml
 
-``` 
-check URL: http://localhost:3000/sitemap.xml
-```
 
 #### header tag
 
-> src/components/layouts/Layout.tsx
+- src/components/layouts/Layout.tsx
 
-#### domain image configuration ( backend source image )
-> next.config.mjs
+#### image hostname configuration
+- next.config.mjs
 
 ```
 ...
@@ -39,12 +44,11 @@ check URL: http://localhost:3000/sitemap.xml
 ```
 
 #### running
-
-> cd nextjs-tailwind-storybook
-
-> npm i
-
-> npm run dev
+```
+cd nextjs-tailwind-storybook
+npm i
+npm run dev
+```
 
 #### screenshot
 ![home](screenshot/home.png)

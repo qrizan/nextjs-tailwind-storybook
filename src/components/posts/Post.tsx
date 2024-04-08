@@ -31,8 +31,8 @@ const Post: React.FC<IPost> = (props) => {
                     sm:w-48 w-24 
                     p-2 object-cover object-center"
                         src={image} alt={title} />
-                    <div className='xl:p-4 lg:p-4 md:p-4 p-1'>
-                        <div className="flex justify-between items-center">
+                    <div className='xl:p-4 lg:p-4 md:p-4 p-1 w-full'>
+                        <div className="flex justify-between items-center w-full">
                             <h3 className="
                             sm:text-xl text-md 
                             text-gray-700 font-bold hover:text-gray-700">{title}
@@ -50,7 +50,7 @@ const Post: React.FC<IPost> = (props) => {
                             Updated <span className="font-light text-gray-600 ml-2"> {dayjs(updated_at).toString()}</span>
                         </div>
                         <span className="
-                        mt-2 text-gray-600 	
+                        mt-2 text-gray-600
                          sm:text-md text-sm sm:line-clamp-4 line-clamp-2
                          " style={{ fontWeight: 'normal' }} dangerouslySetInnerHTML={{ __html: cleanContent }}></span>
                     </div>
