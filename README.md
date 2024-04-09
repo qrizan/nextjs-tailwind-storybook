@@ -4,7 +4,7 @@
 
 | Tools  |  |
 | :--- | :--- |
-| Nest JS  | https://nextjs.org  |
+| Next JS  | https://nextjs.org  |
 | Tailwind CSS | https://tailwindcss.com  |
 | Storybook | https://storybook.js.org |
 | etc |  |
