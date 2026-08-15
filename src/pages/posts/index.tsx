@@ -37,7 +37,7 @@ export async function getServerSideProps(context: {
 
 }
 
-function PostIndex(props: { posts: any; currentPage: string; perPage: string; total: string; }) {
+function PostIndex(props: { posts: any; currentPage: number; perPage: number; total: number; }) {
     const { posts, currentPage, perPage, total } = props;
 
     const [keyword, setKeyword] = useState("");
