@@ -16,8 +16,10 @@ const nextConfig = {
     // pengunduhan dari dalam container sama sekali.
     //
     // Harganya: tidak ada penyesuaian ukuran maupun konversi WebP oleh Next.js.
-    // Alternatifnya (network alias api.localhost + menyuntikkan root CA mkcert
-    // ke image ini) sudah ditolak — lihat DECISION.md di repo news-article.
+    // Alternatifnya — network alias supaya api.localhost bisa di-resolve dari
+    // dalam container — ditolak karena Node tetap akan menolak sertifikat yang
+    // CA-nya tidak dipercaya, sehingga root CA development harus disuntikkan ke
+    // dalam image ini.
     unoptimized: true,
   },
   async rewrites() {
