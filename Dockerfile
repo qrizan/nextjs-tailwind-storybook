@@ -1,7 +1,7 @@
 ########################################
 # Stage: deps — install dependencies
 ########################################
-FROM node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS deps
+FROM node:25-alpine@sha256:bdf2cca6fe3dabd014ea60163eca3f0f7015fbd5c7ee1b0e9ccb4ced6eb02ef4 AS deps
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ RUN npm ci
 ########################################
 # Stage: builder — build with Next.js standalone output
 ########################################
-FROM node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS builder
+FROM node:25-alpine@sha256:bdf2cca6fe3dabd014ea60163eca3f0f7015fbd5c7ee1b0e9ccb4ced6eb02ef4 AS builder
 
 WORKDIR /app
 
@@ -42,7 +42,7 @@ RUN rm -rf \
 ########################################
 # Stage: runner — minimal production runtime (standalone output)
 ########################################
-FROM node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS runner
+FROM node:25-alpine@sha256:bdf2cca6fe3dabd014ea60163eca3f0f7015fbd5c7ee1b0e9ccb4ced6eb02ef4 AS runner
 
 # This stage only ever runs `node server.js`, never npm. The base image's own
 # global npm install bundles its own internal tar dependency (unrelated to
