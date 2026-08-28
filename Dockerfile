@@ -26,6 +26,19 @@ ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN npm run build
 
+# next.config.mjs excludes these paths from output file tracing, but that
+# only reduced them (tar, giget), it did not fully catch @esbuild/linux-x64:
+# Next.js's tracer still leaks some optional platform binaries from
+# devDependency-only build tooling (Storybook) into .next/standalone. None of
+# this is reachable at runtime, so remove it deterministically instead of
+# accepting the CVEs baked into that binary's outdated bundled Go stdlib.
+RUN rm -rf \
+    .next/standalone/node_modules/@esbuild \
+    .next/standalone/node_modules/esbuild \
+    .next/standalone/node_modules/tar \
+    .next/standalone/node_modules/giget \
+    .next/standalone/node_modules/@storybook
+
 ########################################
 # Stage: runner — minimal production runtime (standalone output)
 ########################################

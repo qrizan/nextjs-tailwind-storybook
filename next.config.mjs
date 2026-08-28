@@ -22,6 +22,24 @@ const nextConfig = {
     // dalam image ini.
     unoptimized: true,
   },
+  experimental: {
+    // Output file tracing over-includes @storybook/* build tooling (esbuild,
+    // giget/tar) into .next/standalone: none of it is reachable from app
+    // code, all of it is devDependency-only, but the tracer's static
+    // require/import analysis doesn't know that. Confirmed via Trivy image
+    // scan finding the esbuild binary (with its own outdated Go stdlib CVEs)
+    // and tar physically present in the runner image. Excluded explicitly
+    // instead of accepting the CVEs, since none of this should ship at all.
+    outputFileTracingExcludes: {
+      "/*": [
+        "./node_modules/@storybook/**/*",
+        "./node_modules/esbuild/**/*",
+        "./node_modules/@esbuild/**/*",
+        "./node_modules/giget/**/*",
+        "./node_modules/tar/**/*",
+      ],
+    },
+  },
   async rewrites() {
     return [
       {
