@@ -44,6 +44,13 @@ RUN rm -rf \
 ########################################
 FROM node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS runner
 
+# This stage only ever runs `node server.js`, never npm. The base image's own
+# global npm install bundles its own internal tar dependency (unrelated to
+# anything in package-lock.json here) that carries CVE-2026-59873 in this
+# node:20-alpine digest. Removing npm entirely removes that CVE along with a
+# tool that has no reason to be in a production runtime image.
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx
+
 WORKDIR /app
 
 ENV NODE_ENV=production

@@ -16,7 +16,13 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: npm audit --audit-level=critical
+      # Storybook's own dependency tree (esbuild, puppeteer-core, and dozens
+      # more) carries a long history of advisories and is devDependency-only:
+      # it never ships in the runtime image (verified separately via Trivy
+      # image scan). Auditing it here just repeats that noise against a tree
+      # that was never at risk. --omit=dev restricts the audit to what
+      # actually reaches production.
+      - run: npm audit --omit=dev --audit-level=critical
 
   semgrep:
     runs-on: ubuntu-latest
